@@ -1,0 +1,6 @@
+@ImportBeerDV_HostAddress = http://localhost:5022
+
+GET {{ImportBeerDV_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
