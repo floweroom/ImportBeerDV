@@ -1,61 +1,22 @@
 ﻿using ImportBeerDV.Models;
 using Microsoft.AspNetCore.Mvc;
 using BeerDB;
+using ImportBeerDV.Repository;
+using ImportBeerDV.Repository.Interfaces;
 
 public class HomeController : Controller
 {
+    private readonly ILogger<HomeController> _logger;
 
+    private readonly IBeerRepository _beerRepository;
 
-    private ILogger<HomeController> _logger;
-
-    public BeerContext _beerContext;
-
-    public HomeController(ILogger<HomeController> logger, BeerContext beerContext)
+    private readonly BeerContext _beerdb;
+    public HomeController(ILogger<HomeController> logger, IBeerRepository beerrepository, BeerContext beerdb)
     {
         _logger = logger;
+        _beerdb = beerdb;
+        _beerRepository = beerrepository;
 
-        _beerContext = beerContext;
-
-    }
-    //[HttpDelete(Name = "")]
-    [HttpGet("{id}")]
-    public async Task<ModelsBeer> GetId(int id)
-    {
-        //ModelsBeer beer = BeerDB.
-        return new ModelsBeer();
-    }
-
-
-    [HttpGet]
-    public IEnumerable<BeerDto> Get()
-    {
-
-        //List<BeerDto> result = new List<BeerDto>();
-
-        //foreach (ModelsBeer modelsBeer in _beerContext.BModels.ToList();)
-        return new BeerDto[0];
-
-    }
-
-    [HttpPost]
-    public async Task Add(BeerDto Beer)
-    {
-        ModelsBeer beer = new ModelsBeer()
-        {
-            Brand = Beer.Brand,
-
-            Name = Beer.Name,
-
-            Botle = Beer.Botle,
-
-            Price = Beer.Price,
-
-            Region = Beer.Region,
-
-        };
-
-        _beerContext.Add(Beer);
-        _beerContext.SaveChanges();
     }
 
 }
