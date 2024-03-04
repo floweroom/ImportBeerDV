@@ -1,5 +1,4 @@
-﻿
-using BeerDB;
+﻿using BeerDB;
 using System.Net.Http.Json;
 
 Console.WriteLine("Нажмите enter для начала работы");

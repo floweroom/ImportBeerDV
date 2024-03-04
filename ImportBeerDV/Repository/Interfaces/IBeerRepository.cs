@@ -1,11 +1,12 @@
 ﻿using BeerDB;
+using ImportBeerDV.Entities;
 using ImportBeerDV.Models;
 using Microsoft.AspNetCore.Mvc;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace ImportBeerDV.Repository.Interfaces
 {
-    public interface IBeerRepository
+    public interface IBeerRepository<T> where T : class, IEntity
     {
         public Task<ModelsBeer> GetId(int id);
 

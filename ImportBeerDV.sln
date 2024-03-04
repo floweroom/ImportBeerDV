@@ -10,7 +10,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImportBeerDV", "ImportBeerD
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeerDB", "BeerDB\BeerDB.csproj", "{4ACF58F3-4D5F-4EA3-9EBD-8BC9B70AB9B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerConsole", "BeerConsole\BeerConsole.csproj", "{6FF188C2-ED5C-4DDF-A0B3-D769E52D64EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeerConsole", "BeerConsole\BeerConsole.csproj", "{6FF188C2-ED5C-4DDF-A0B3-D769E52D64EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
