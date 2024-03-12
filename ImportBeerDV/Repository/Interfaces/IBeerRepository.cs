@@ -8,17 +8,20 @@ namespace ImportBeerDV.Repository.Interfaces
 {
     public interface IBeerRepository<T> where T : class, IEntity
     {
-        public Task<ModelsBeer> GetId(int id);
+        Task<int> Count(CancellationToken Cancel = default);
 
-        public Task <IEnumerable<BeerDto>> Get();
+        Task<ModelsBeer> GetIdAsync(int id);
+
+        Task<IEnumerable<T>> GetAsync(int Skip, int Take, CancellationToken Cancel = default);
+
+        Task <IEnumerable<BeerDto>> GetAllAsync();
+        
+        public Task AddAsync(BeerDto Beer);
+
+        public Task UpdateAsync(int Id, BeerDto Beer);
 
 
-        public Task Add(BeerDto Beer);
-
-        public Task Update(int Id, BeerDto Beer);
-
-
-        public Task Delete(int id);
+        public Task DeleteAsync(int id);
 
 
     }

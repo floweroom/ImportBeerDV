@@ -10,8 +10,6 @@
 
         public int Botle { get; set; }
 
-        public int Price { get; set; }
-
         public string Region { get; set; }
     }
 }

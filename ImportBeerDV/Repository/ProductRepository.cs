@@ -5,13 +5,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ImportBeerDV.Repository
 {
-    public class BeerRepository: IBeerRepository
+    public class ProductRepository<Item>: IBeerRepository<Item>
     {
-        private ILogger<BeerRepository> _logger;
+        private ILogger<ProductRepository<Item>> _logger;
 
         public BeerContext _beerContext;
 
-        public BeerRepository(ILogger<BeerRepository> logger, BeerContext beerContext)
+        public ProductRepository(ILogger<ProductRepository<Item>> logger, BeerContext beerContext)
         {
             _logger = logger;
 
@@ -49,8 +49,6 @@ namespace ImportBeerDV.Repository
 
                 Botle = Beer.Botle,
 
-                Price = Beer.Price,
-
                 Region = Beer.Region,
 
             };
@@ -59,7 +57,7 @@ namespace ImportBeerDV.Repository
             _beerContext.SaveChanges();
         }
 
-        Task<IEnumerable<BeerDto>> IBeerRepository.Get()
+        Task<IEnumerable<BeerDto>> IBeerRepository<Item>.Get()
         {
             throw new NotImplementedException();
         }
