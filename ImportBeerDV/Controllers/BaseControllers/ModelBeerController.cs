@@ -3,83 +3,96 @@ using ImportBeerDV.Entities;
 using ImportBeerDV.Repository.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ImportBeerDV.Controllers.BaseControllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ModelBeerController<T> : ControllerBase where T : class, IEntity
+    public class ModelBeerController : ControllerBase
     {
-        protected IBeerRepository<T> Repository { get; }
-        BeerContext db;
-        ModelBeerController(BeerContext context)
+
+        private BeerContext db;
+        public ModelBeerController(BeerContext context)
         {
             db = context;
-            if (!db.BModels.Any())
-            {
-                db.BModels.Add(new ModelsBeer { Brand = "Krusovice", Name = "светлое", Botle= 0,5, Region="Holand" });
-                db.BModels.Add(new ModelsBeer { Brand = "Paulaner", Name = "Salvator", Botle = 0,5, Region = "Germany" });
-                db.SaveChanges();
-            }
-        }
-        
-            [HttpGet("count")]
-            public virtual async Task<IActionResult> Count()
-        {
-            var count = await Repository.Count();
-            return Ok(count);
+
+
         }
 
-        [HttpGet]
-        public virtual async Task<IActionResult> GetAll()
+        [HttpGet("get")]
+        public async Task<ActionResult<IEnumerable<ModelsBeer>>> Get()
         {
-            var items = await Repository.GetAllAsync();
-            if (!items.Any())
-                return NoContent();
-            return Ok(items);
+            return await db.BModels.ToListAsync();
         }
 
-        [HttpGet("({Skip}:{Take})")]
-        public virtual async Task<IActionResult> Get(int Skip, int Take)
-        {
-            var items = await Repository.GetAsync(Skip, Take);
-            if (!items.Any())
-                return NoContent();
-            return Ok(items);
-        }
 
-        [HttpGet("{Id}")]
-        public virtual async Task<IActionResult> GetById(int Id)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ModelsBeer>> Get(int id)
+
         {
-            var item = await Repository.GetIdAsync(Id);
-            if (item is null)
+            ModelsBeer modelbeer = await db.BModels.FirstOrDefaultAsync(x => x.Id == id);
+            if (modelbeer == null)
                 return NotFound();
-            return Ok(item);
+            return new ObjectResult(modelbeer);
+
         }
 
         [HttpPost]
-        public virtual async Task<IActionResult> Add([FromBody] T item)
+        public async Task<ActionResult<ModelsBeer>> Post(ModelsBeer modelsBeer)
         {
-            var id = await Repository.AddAsync(item);
-            return CreatedAtAction(nameof(GetById), new { Id = id }, item);
+            if (modelsBeer == null)
+            {
+                return BadRequest();
+            }
+
+            db.BModels.Add(modelsBeer);
+            await db.SaveChangesAsync();
+            return Ok(modelsBeer);
+
         }
 
         [HttpPut]
-        public virtual async Task<IActionResult> Update([FromBody] T item)
+        public async Task<ActionResult<ModelsBeer>> Put(ModelsBeer modelsBeer)
         {
-            var result = await Repository.UpdateAsync(item);
-            if (result)
-                return Ok(true);
-            return NotFound(false);
+            if (modelsBeer == null)
+            {
+                return BadRequest();
+            }
+            if (!db.BModels.Any(x => x.Id == modelsBeer.Id))
+            {
+                return NotFound();
+            }
+            db.Update(modelsBeer);
+            await db.SaveChangesAsync();
+            return Ok(modelsBeer);
         }
 
-        [HttpDelete("{Id}")]
-        public virtual async Task<IActionResult> Delete(int Id)
+        [HttpDelete]
+        public async Task<ActionResult<ModelsBeer>> Delete(int id)
         {
-            var item = await Repository.RemoveAsync(Id);
-            if (item is null)
+
+            ModelsBeer modelsbeer = db.BModels.FirstOrDefault(x => x.Id == id);
+            if (modelsbeer == null)
+            {
                 return NotFound();
-            return Ok(item);
+            }
+            db.BModels.Remove(modelsbeer);
+            db.SaveChangesAsync();
+            return Ok(modelsbeer);
         }
     }
-}
+
+         
+
+
+        
+ }
+
+
+           
+          
+     
+ 
+    
+
