@@ -1,9 +1,12 @@
 ﻿using BeerDB;
 using ImportBeerDV.Entities;
+using ImportBeerDV.Models;
 using ImportBeerDV.Repository.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics.Eventing.Reader;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace ImportBeerDV.Controllers.BaseControllers
 {
@@ -39,60 +42,76 @@ namespace ImportBeerDV.Controllers.BaseControllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ModelsBeer>> Post(ModelsBeer modelsBeer)
+        public async Task<ActionResult<BeerDto>> Post(BeerDto beerDto)
         {
-            if (modelsBeer == null)
+            if (beerDto == null)
             {
                 return BadRequest();
             }
+            else
+            {
+                ModelsBeer modelsBeer = new ModelsBeer
+                {
+                    Id = beerDto.Id,
 
-            db.BModels.Add(modelsBeer);
-            await db.SaveChangesAsync();
-            return Ok(modelsBeer);
+                    Brand = beerDto.Brand,
 
+                    Name = beerDto.Name,
+
+                    Botle = beerDto.Botle,
+
+                    Region = beerDto.Region
+
+                };
+                db.BModels.Add(modelsBeer);
+                await db.SaveChangesAsync();
+                return Ok(beerDto);
+
+            }
+
+            [HttpDelete]
+            public async Task<ActionResult<ModelsBeer>> Delete(int id)
+            {
+
+                ModelsBeer modelsbeer = db.BModels.FirstOrDefault(x => x.Id == id);
+                if (modelsbeer == null)
+                {
+                    return NotFound();
+                }
+                db.BModels.Remove(modelsbeer);
+                db.SaveChangesAsync();
+                return Ok(modelsbeer);
+            }
+            [HttpPost]
+
+            public async Task Update(int Id, BeerDto beerDto)
+            {
+                ModelsBeer modelsBeer = new ModelsBeer
+                {
+                    Id = beerDto.Id
+
+                };
+                db.BModels.Update(modelsBeer);
+                await db.SaveChangesAsync();
+
+
+
+            }
         }
 
-        [HttpPut]
-        public async Task<ActionResult<ModelsBeer>> Put(ModelsBeer modelsBeer)
-        {
-            if (modelsBeer == null)
-            {
-                return BadRequest();
-            }
-            if (!db.BModels.Any(x => x.Id == modelsBeer.Id))
-            {
-                return NotFound();
-            }
-            db.Update(modelsBeer);
-            await db.SaveChangesAsync();
-            return Ok(modelsBeer);
-        }
 
-        [HttpDelete]
-        public async Task<ActionResult<ModelsBeer>> Delete(int id)
-        {
 
-            ModelsBeer modelsbeer = db.BModels.FirstOrDefault(x => x.Id == id);
-            if (modelsbeer == null)
-            {
-                return NotFound();
-            }
-            db.BModels.Remove(modelsbeer);
-            db.SaveChangesAsync();
-            return Ok(modelsbeer);
-        }
+
+
+
     }
-
-         
-
-
-        
- }
+}
 
 
-           
-          
-     
- 
-    
+
+
+
+
+
+
 

@@ -8,7 +8,7 @@
 
         public string Name { get; set; }
 
-        public int Botle { get; set; }
+        public decimal Botle { get; set; }
 
         public string Region { get; set; }
     }
