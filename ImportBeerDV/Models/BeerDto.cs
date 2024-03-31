@@ -11,5 +11,7 @@
         public decimal Botle { get; set; }
 
         public string Region { get; set; }
+
+        public int Amount { get; set; }
     }
 }

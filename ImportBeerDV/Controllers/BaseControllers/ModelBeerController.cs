@@ -39,6 +39,7 @@ namespace ImportBeerDV.Controllers.BaseControllers
                 return NotFound();
             return new ObjectResult(modelbeer);
 
+
         }
 
         [HttpPost]
@@ -60,16 +61,22 @@ namespace ImportBeerDV.Controllers.BaseControllers
 
                     Botle = beerDto.Botle,
 
-                    Region = beerDto.Region
+                    Region = beerDto.Region,
+
+                    Amount = beerDto.Amount
 
                 };
+
+
                 db.BModels.Add(modelsBeer);
                 await db.SaveChangesAsync();
                 return Ok(beerDto);
 
             }
+        }
 
             [HttpDelete]
+
             public async Task<ActionResult<ModelsBeer>> Delete(int id)
             {
 
@@ -79,16 +86,27 @@ namespace ImportBeerDV.Controllers.BaseControllers
                     return NotFound();
                 }
                 db.BModels.Remove(modelsbeer);
-                db.SaveChangesAsync();
+                await db.SaveChangesAsync();
                 return Ok(modelsbeer);
             }
-            [HttpPost]
+            [HttpPost("{Id}")]
 
             public async Task Update(int Id, BeerDto beerDto)
             {
                 ModelsBeer modelsBeer = new ModelsBeer
                 {
-                    Id = beerDto.Id
+                    Id = Id,
+
+                    Brand = beerDto.Brand,
+
+                    Name = beerDto.Name,
+
+                    Botle = beerDto.Botle,
+
+                    Region = beerDto.Region,
+
+                    Amount = beerDto.Amount
+
 
                 };
                 db.BModels.Update(modelsBeer);
@@ -96,15 +114,16 @@ namespace ImportBeerDV.Controllers.BaseControllers
 
 
 
+
             }
-        }
+     }
 
 
 
 
 
 
-    }
+    
 }
 
 
