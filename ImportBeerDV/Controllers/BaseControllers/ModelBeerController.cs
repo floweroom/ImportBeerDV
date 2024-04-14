@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics.Eventing.Reader;
+using System.Drawing;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace ImportBeerDV.Controllers.BaseControllers
@@ -53,17 +54,22 @@ namespace ImportBeerDV.Controllers.BaseControllers
             {
                 ModelsBeer modelsBeer = new ModelsBeer
                 {
-                    Id = beerDto.Id,
-
+                   
                     Brand = beerDto.Brand,
 
                     Name = beerDto.Name,
 
-                    Botle = beerDto.Botle,
-
                     Region = beerDto.Region,
 
-                    Amount = beerDto.Amount
+                    Calories = beerDto.Calories,
+
+                    Strength = beerDto.Strength,
+
+                    Colour = beerDto.Colour,
+
+                    Volume = beerDto.Volume,
+
+                   
 
                 };
 
@@ -95,17 +101,20 @@ namespace ImportBeerDV.Controllers.BaseControllers
             {
                 ModelsBeer modelsBeer = new ModelsBeer
                 {
-                    Id = Id,
-
+                   
                     Brand = beerDto.Brand,
 
                     Name = beerDto.Name,
 
-                    Botle = beerDto.Botle,
-
                     Region = beerDto.Region,
 
-                    Amount = beerDto.Amount
+                    Calories = beerDto.Calories,
+
+                    Strength = beerDto.Strength,
+
+                    Colour = beerDto.Colour,
+
+                    Volume = beerDto.Volume,
 
 
                 };

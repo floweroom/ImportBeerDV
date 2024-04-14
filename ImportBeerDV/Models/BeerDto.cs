@@ -1,4 +1,6 @@
-﻿namespace ImportBeerDV.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace ImportBeerDV.Models
 {
     public class BeerDto
     {
@@ -8,10 +10,20 @@
 
         public string Name { get; set; }
 
-        public decimal Botle { get; set; }
+       public string Region { get; set; }
 
-        public string Region { get; set; }
+        public decimal Calories { get; set; }
 
-        public int Amount { get; set; }
+        public string Strength { get; set; }
+
+        public string Colour { get; set; }
+
+        public decimal Degree { get; set; }
+
+        public decimal Volume { get; set; }
+
+        public string Taste { get; set; }
+
+       
     }
 }
