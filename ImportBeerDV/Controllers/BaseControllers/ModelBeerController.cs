@@ -44,6 +44,7 @@ namespace ImportBeerDV.Controllers.BaseControllers
         }
 
         [HttpPost]
+
         public async Task<ActionResult<BeerDto>> Post(BeerDto beerDto)
         {
             if (beerDto == null)
@@ -63,13 +64,13 @@ namespace ImportBeerDV.Controllers.BaseControllers
 
                     Calories = beerDto.Calories,
 
-                    Strength = beerDto.Strength,
-
                     Colour = beerDto.Colour,
+
+                    Degree = beerDto.Degree,
 
                     Volume = beerDto.Volume,
 
-                   
+                    Taste = beerDto.Taste,
 
                 };
 
@@ -101,7 +102,7 @@ namespace ImportBeerDV.Controllers.BaseControllers
             {
                 ModelsBeer modelsBeer = new ModelsBeer
                 {
-                   
+
                     Brand = beerDto.Brand,
 
                     Name = beerDto.Name,
@@ -110,11 +111,13 @@ namespace ImportBeerDV.Controllers.BaseControllers
 
                     Calories = beerDto.Calories,
 
-                    Strength = beerDto.Strength,
-
                     Colour = beerDto.Colour,
 
+                    Degree = beerDto.Degree,
+
                     Volume = beerDto.Volume,
+
+                    Taste = beerDto.Taste,
 
 
                 };

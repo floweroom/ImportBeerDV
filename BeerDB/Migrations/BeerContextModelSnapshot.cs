@@ -29,15 +29,19 @@ namespace BeerDB.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Amount")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Botle")
-                        .HasColumnType("decimal(5, 2)");
-
                     b.Property<string>("Brand")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Calories")
+                        .HasColumnType("decimal(5, 2)");
+
+                    b.Property<string>("Colour")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Degree")
+                        .HasColumnType("decimal(5, 2)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -46,6 +50,13 @@ namespace BeerDB.Migrations
                     b.Property<string>("Region")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Taste")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Volume")
+                        .HasColumnType("decimal(5, 2)");
 
                     b.HasKey("Id");
 

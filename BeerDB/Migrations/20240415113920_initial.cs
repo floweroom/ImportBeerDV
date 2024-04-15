@@ -18,9 +18,12 @@ namespace BeerDB.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Brand = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Botle = table.Column<decimal>(type: "decimal(5,2)", nullable: false),
                     Region = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Amount = table.Column<int>(type: "int", nullable: false)
+                    Calories = table.Column<decimal>(type: "decimal(5,2)", nullable: false),
+                    Colour = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Degree = table.Column<decimal>(type: "decimal(5,2)", nullable: false),
+                    Volume = table.Column<decimal>(type: "decimal(5,2)", nullable: false),
+                    Taste = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -10,11 +10,9 @@ namespace ImportBeerDV.Models
 
         public string Name { get; set; }
 
-       public string Region { get; set; }
+        public string Region { get; set; }
 
         public decimal Calories { get; set; }
-
-        public string Strength { get; set; }
 
         public string Colour { get; set; }
 
@@ -26,4 +24,5 @@ namespace ImportBeerDV.Models
 
        
     }
+
 }

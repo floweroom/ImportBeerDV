@@ -32,97 +32,97 @@ using (var scope = app.Services.CreateScope())
     Db.Database.EnsureDeleted();
     // Db.Database.EnsureCreated();
     Db.Database.Migrate();
-    if (!Db.BModels.Any())
-    {
-        ModelsBeer modelsBeer = new ModelsBeer
-        {
+    //if (!Db.BModels.Any())
+    //{
+    //    ModelsBeer modelsBeer = new ModelsBeer
+    //    {
             
-            Brand = "Velkopopovicky Kozel",
+    //        Brand = "Velkopopovicky Kozel",
 
-            Name = "Темное",
+    //        Name = "Темное",
 
-            Region = "Чехия",
+    //        Region = "Чехия",
 
-            Calories = "43",
+    //        Calories = "43",
 
-            Colour = "Темное",
+    //        Colour = "Темное",
 
-            Degree = 4,
+    //        Degree = 4,
 
-            Volume = 0.5,
+    //        Volume = 0.5,
 
-            Taste = "Цитрусово-пряный",
+    //        Taste = "Цитрусово-пряный",
 
-        };
+    //    };
 
-        ModelsBeer modelsBeer1 = new ModelsBeer
-        {
+    //    ModelsBeer modelsBeer1 = new ModelsBeer
+    //    {
             
 
-            Brand = "Krušovice",
+    //        Brand = "Krušovice",
 
-            Name = "černé",
+    //        Name = "černé",
                      
-            Region = "Чехия",
+    //        Region = "Чехия",
 
-            Calories = "35",
+    //        Calories = "35",
 
-            Colour = "Светлое",
+    //        Colour = "Светлое",
 
-            Degree = 3.8,
+    //        Degree = 3.8,
 
-            Volume = 0.33,
+    //        Volume = 0.33,
 
-            Taste = "Шоколад",
+    //        Taste = "Шоколад",
 
-        };
+    //    };
 
-        ModelsBeer modelsBeer2 = new ModelsBeer
-        {
+    //    ModelsBeer modelsBeer2 = new ModelsBeer
+    //    {
             
-            Brand = "Blanche de Bruxelles",
+    //        Brand = "Blanche de Bruxelles",
 
-            Name = "Rosee",
+    //        Name = "Rosee",
 
-            Region = "Бельгия",
+    //        Region = "Бельгия",
                         
-            Calories = 0.45
+    //        Calories = 0.45
 
-            Colour = "Светлое",
+    //        Colour = "Светлое",
 
-            Degree = 4.5,
+    //        Degree = 4.5,
 
-            Volume = 0.33,
+    //        Volume = 0.33,
 
-            Taste = "Цитрусовые"
+    //        Taste = "Цитрусовые"
 
 
-        }; 
-        ModelsBeer modelsBeer2 = new ModelsBeer
-        {
+    //    }; 
+    //    ModelsBeer modelsBeer2 = new ModelsBeer
+    //    {
             
-            Brand = "The Musketeers ",
+    //        Brand = "The Musketeers ",
 
-            Name = "Troubadour Magma",
+    //        Name = "Troubadour Magma",
 
-            Region = "Бельгия",
+    //        Region = "Бельгия",
 
-            Calories = 0.48,
+    //        Calories = 0.48,
 
-            Colour = "Светлое",
+    //        Colour = "Светлое",
 
-            Degree = 0.9,
+    //        Degree = 0.9,
 
-            Volume = 0.33,
+    //        Volume = 0.33,
             
-            Taste = "Смородина"
+    //        Taste = "Смородина"
 
-        };
+    //    };
         
 
-        Db.BModels.Add(modelsBeer);
+    //    Db.BModels.Add(modelsBeer);
         await Db.SaveChangesAsync();
-    }
+    //}
 }
 
 // Configure the HTTP request pipeline.

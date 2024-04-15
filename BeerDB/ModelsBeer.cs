@@ -11,21 +11,26 @@ namespace BeerDB
     {
         public int Id {  get; set; }
 
+
         public string Brand { get; set; }
+
 
         public string Name { get; set; }
 
+
         public string Region { get; set; }
+
 
         [Column(TypeName = "decimal(5, 2)")]
         public decimal Calories { get; set; }
 
-        public string Strength { get; set; }
 
         public string Colour { get; set; }
 
+
         [Column(TypeName = "decimal(5, 2)")]
         public decimal Degree { get; set; }
+
 
         [Column(TypeName = "decimal(5, 2)")]
         public decimal Volume{ get; set; }
