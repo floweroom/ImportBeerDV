@@ -30,99 +30,105 @@ using (var scope = app.Services.CreateScope())
 {
     var Db = scope.ServiceProvider.GetRequiredService<BeerContext>();
     Db.Database.EnsureDeleted();
-    // Db.Database.EnsureCreated();
-    Db.Database.Migrate();
-    //if (!Db.BModels.Any())
-    //{
-    //    ModelsBeer modelsBeer = new ModelsBeer
-    //    {
-            
-    //        Brand = "Velkopopovicky Kozel",
-
-    //        Name = "Темное",
-
-    //        Region = "Чехия",
-
-    //        Calories = "43",
-
-    //        Colour = "Темное",
-
-    //        Degree = 4,
-
-    //        Volume = 0.5,
-
-    //        Taste = "Цитрусово-пряный",
-
-    //    };
-
-    //    ModelsBeer modelsBeer1 = new ModelsBeer
-    //    {
-            
-
-    //        Brand = "Krušovice",
-
-    //        Name = "černé",
-                     
-    //        Region = "Чехия",
-
-    //        Calories = "35",
-
-    //        Colour = "Светлое",
-
-    //        Degree = 3.8,
-
-    //        Volume = 0.33,
-
-    //        Taste = "Шоколад",
-
-    //    };
-
-    //    ModelsBeer modelsBeer2 = new ModelsBeer
-    //    {
-            
-    //        Brand = "Blanche de Bruxelles",
-
-    //        Name = "Rosee",
-
-    //        Region = "Бельгия",
-                        
-    //        Calories = 0.45
-
-    //        Colour = "Светлое",
-
-    //        Degree = 4.5,
-
-    //        Volume = 0.33,
-
-    //        Taste = "Цитрусовые"
+     //Db.Database.EnsureCreated();
+     Db.Database.Migrate();
+    if (!Db.BModels.Any())
+    {
 
 
-    //    }; 
-    //    ModelsBeer modelsBeer2 = new ModelsBeer
-    //    {
-            
-    //        Brand = "The Musketeers ",
+        ModelsBeer modelsBeer = new ModelsBeer
+        {
 
-    //        Name = "Troubadour Magma",
+            Brand = "Velkopopovicky Kozel",
 
-    //        Region = "Бельгия",
+            Name = "Темное",
 
-    //        Calories = 0.48,
+            Region = "Чехия",
 
-    //        Colour = "Светлое",
+            Calories = 43,
 
-    //        Degree = 0.9,
+            Colour = "Темное",
 
-    //        Volume = 0.33,
-            
-    //        Taste = "Смородина"
+            Degree = 4,
 
-    //    };
-        
+            Volume = 0.5M,
 
-    //    Db.BModels.Add(modelsBeer);
+            Taste = "Цитрусово-пряный",
+
+        };
+
+        ModelsBeer modelsBeer1 = new ModelsBeer
+        {
+
+
+            Brand = "Krušovice",
+
+            Name = "černé",
+
+            Region = "Чехия",
+
+            Calories = 35,
+
+            Colour = "Светлое",
+
+            Degree = 3.8M,
+
+            Volume = 0.33M,
+
+            Taste = "Шоколад",
+
+        };
+
+        ModelsBeer modelsBeer2 = new ModelsBeer
+        {
+
+            Brand = "Blanche de Bruxelles",
+
+            Name = "Rosee",
+
+            Region = "Бельгия",
+
+            Calories = 45,
+
+            Colour = "Светлое",
+
+            Degree = 4.5M,
+
+            Volume = 0.33M,
+
+            Taste = "Цитрусовые"
+
+
+        };
+        ModelsBeer modelsBeer3 = new ModelsBeer
+        {
+
+            Brand = "The Musketeers ",
+
+            Name = "Troubadour Magma",
+
+            Region = "Бельгия",
+
+            Calories = 48,
+
+            Colour = "Светлое",
+
+            Degree = 0.9M,
+
+            Volume = 0.33M,
+
+            Taste = "Смородина"
+
+        };
+
+
+        Db.BModels.Add(modelsBeer);
+        Db.BModels.Add(modelsBeer1);
+        Db.BModels.Add(modelsBeer2);
+        Db.BModels.Add(modelsBeer3);
+      
         await Db.SaveChangesAsync();
-    //}
+    }
 }
 
 // Configure the HTTP request pipeline.
