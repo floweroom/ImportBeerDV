@@ -1,3 +1,7 @@
+using System.Net.Http.Json;
+using BeerDB;
+using ImportBeerDV.Models;
+
 namespace BeerForms
 {
     public partial class Form1 : Form
@@ -12,9 +16,61 @@ namespace BeerForms
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
 
+            const string adress_str = "https://localhost:7143";
+            var client = new HttpClient();
+            client.BaseAddress = new Uri(adress_str);
+
+            var response = await client.GetAsync("api/modelbeer/get");
+            response.EnsureSuccessStatusCode();
+            var models = await response.Content.ReadFromJsonAsync<IEnumerable<ModelsBeer>>();
+
+            ProductsList.Items.Clear();
+
+            foreach (var item in models)
+            {
+                ProductsList.Items.Add(item.Name);
+            }
         }
+
+        private async void button2_Click(object sender, EventArgs e)
+        {
+            const string adress_str = "https://localhost:7143";
+            var client = new HttpClient();
+            client.BaseAddress = new Uri(adress_str);
+
+            BeerDto beerDto = new BeerDto
+            {
+                Category = "Пиво",
+
+                Brand = "Prazechka",
+
+                Name = "Светлое",
+
+                Region = "Чехия",
+
+                Calories = 43,
+
+                Colour = "Темное",
+
+                Degree = 4,
+
+                Volume = 0.5M,
+
+                Taste = "пряный",
+            };
+
+
+
+            var response = await client.PostAsJsonAsync("api/ModelBeer", beerDto);
+
+
+           
+
+        }
+
     }
 }
+

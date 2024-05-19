@@ -30,14 +30,15 @@ using (var scope = app.Services.CreateScope())
 {
     var Db = scope.ServiceProvider.GetRequiredService<BeerContext>();
     Db.Database.EnsureDeleted();
-     //Db.Database.EnsureCreated();
-     Db.Database.Migrate();
+    Db.Database.EnsureCreated();
+    //Db.Database.Migrate();
     if (!Db.BModels.Any())
     {
 
 
         ModelsBeer modelsBeer = new ModelsBeer
         {
+            Category = "Пиво",
 
             Brand = "Velkopopovicky Kozel",
 
@@ -45,7 +46,7 @@ using (var scope = app.Services.CreateScope())
 
             Region = "Чехия",
 
-            Calories = 43,
+            Calories = 4311,
 
             Colour = "Темное",
 
@@ -60,6 +61,7 @@ using (var scope = app.Services.CreateScope())
         ModelsBeer modelsBeer1 = new ModelsBeer
         {
 
+            Category = "Пиво",
 
             Brand = "Krušovice",
 
@@ -82,6 +84,8 @@ using (var scope = app.Services.CreateScope())
         ModelsBeer modelsBeer2 = new ModelsBeer
         {
 
+            Category = "Пиво",
+
             Brand = "Blanche de Bruxelles",
 
             Name = "Rosee",
@@ -102,6 +106,9 @@ using (var scope = app.Services.CreateScope())
         };
         ModelsBeer modelsBeer3 = new ModelsBeer
         {
+
+
+            Category = "Пиво",
 
             Brand = "The Musketeers ",
 
@@ -126,7 +133,7 @@ using (var scope = app.Services.CreateScope())
         Db.BModels.Add(modelsBeer1);
         Db.BModels.Add(modelsBeer2);
         Db.BModels.Add(modelsBeer3);
-      
+
         await Db.SaveChangesAsync();
     }
 }

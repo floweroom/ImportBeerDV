@@ -55,6 +55,7 @@ namespace ImportBeerDV.Controllers.BaseControllers
             {
                 ModelsBeer modelsBeer = new ModelsBeer
                 {
+                    Category = beerDto.Category,
                    
                     Brand = beerDto.Brand,
 
@@ -96,12 +97,14 @@ namespace ImportBeerDV.Controllers.BaseControllers
                 await db.SaveChangesAsync();
                 return Ok(modelsbeer);
             }
+
             [HttpPost("{Id}")]
 
             public async Task Update(int Id, BeerDto beerDto)
             {
                 ModelsBeer modelsBeer = new ModelsBeer
                 {
+                    Category = beerDto.Category,
 
                     Brand = beerDto.Brand,
 

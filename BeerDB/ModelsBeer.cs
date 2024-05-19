@@ -12,6 +12,9 @@ namespace BeerDB
         public int Id {  get; set; }
 
 
+        public string Category { get; set; }  
+
+
         public string Brand { get; set; }
 
 
@@ -21,7 +24,7 @@ namespace BeerDB
         public string Region { get; set; }
 
 
-        [Column(TypeName = "decimal(5, 2)")]
+        [Column(TypeName = "decimal(10, 2)")]
         public decimal Calories { get; set; }
 
 
