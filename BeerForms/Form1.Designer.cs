@@ -57,9 +57,9 @@
             // ProductsList
             // 
             ProductsList.FormattingEnabled = true;
-            ProductsList.Location = new Point(494, 0);
+            ProductsList.Location = new Point(667, 0);
             ProductsList.Name = "ProductsList";
-            ProductsList.Size = new Size(307, 244);
+            ProductsList.Size = new Size(134, 184);
             ProductsList.TabIndex = 2;
             // 
             // button3
@@ -70,6 +70,7 @@
             button3.TabIndex = 3;
             button3.Text = "Удалить продукт";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // Form1
             // 

@@ -30,8 +30,8 @@ using (var scope = app.Services.CreateScope())
 {
     var Db = scope.ServiceProvider.GetRequiredService<BeerContext>();
     Db.Database.EnsureDeleted();
-    Db.Database.EnsureCreated();
-    //Db.Database.Migrate();
+    //Db.Database.EnsureCreated();
+    Db.Database.Migrate();
     if (!Db.BModels.Any())
     {
 

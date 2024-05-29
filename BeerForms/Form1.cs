@@ -67,10 +67,21 @@ namespace BeerForms
             var response = await client.PostAsJsonAsync("api/ModelBeer", beerDto);
 
 
-           
+
 
         }
 
+        private async void button3_Click(object sender, EventArgs e)
+        {
+            const string adress_str = "https://localhost:7143";
+            var client = new HttpClient();
+            client.BaseAddress = new Uri(adress_str);
+            var id = 1;
+            
+            var response = await client.DeleteAsync($"api/ModelBeer?id={id}");
+
+
+        }
     }
 }
 
