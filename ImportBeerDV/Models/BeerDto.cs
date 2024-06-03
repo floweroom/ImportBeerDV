@@ -18,8 +18,6 @@ namespace ImportBeerDV.Models
 
         public string Colour { get; set; }
 
-        public decimal Degree { get; set; }
-
         public decimal Volume { get; set; }
 
         public string Taste { get; set; }

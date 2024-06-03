@@ -29,7 +29,7 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var Db = scope.ServiceProvider.GetRequiredService<BeerContext>();
-    Db.Database.EnsureDeleted();
+    //Db.Database.EnsureDeleted();
     //Db.Database.EnsureCreated();
     Db.Database.Migrate();
     if (!Db.BModels.Any())
@@ -38,67 +38,62 @@ using (var scope = app.Services.CreateScope())
 
         ModelsBeer modelsBeer = new ModelsBeer
         {
-            Category = "Пиво",
+            Category = "Лимонад",
 
-            Brand = "Velkopopovicky Kozel",
+            Brand = "Волчек",
 
-            Name = "Темное",
+            Name = "Арбуз",
 
             Region = "Чехия",
 
-            Calories = 4311,
+            Calories = 250,
 
-            Colour = "Темное",
-
-            Degree = 4,
+            Colour = "Красный",
 
             Volume = 0.5M,
 
-            Taste = "Цитрусово-пряный",
+            Taste = "Арбуз",
 
         };
 
         ModelsBeer modelsBeer1 = new ModelsBeer
         {
 
-            Category = "Пиво",
+            Category = "Лимонад",
 
-            Brand = "Krušovice",
+            Brand = "Волчек",
 
-            Name = "černé",
+            Name = "Персиковый",
 
-            Region = "Чехия",
+            Region = "Россия",
 
-            Calories = 35,
+            Calories = 250,
 
-            Colour = "Светлое",
+            Colour = "Персиковый",
 
-            Degree = 3.8M,
+            Volume = 0.5M,
 
-            Volume = 0.33M,
-
-            Taste = "Шоколад",
+            Taste = "Персик",
 
         };
 
         ModelsBeer modelsBeer2 = new ModelsBeer
         {
 
-            Category = "Пиво",
+            Category = "Лимонад",
 
-            Brand = "Blanche de Bruxelles",
+            Brand = "Волчек",
 
-            Name = "Rosee",
+            Name = "Манго-кокос",
 
-            Region = "Бельгия",
+            Region = "Россия",
 
-            Calories = 45,
+            Calories = 250,
 
-            Colour = "Светлое",
+            Colour = "Оранжевый",
 
-            Degree = 4.5M,
-
-            Volume = 0.33M,
+          
+            Volume = 0.5M,
 
             Taste = "Цитрусовые"
 
@@ -108,23 +103,22 @@ using (var scope = app.Services.CreateScope())
         {
 
 
-            Category = "Пиво",
+            Category = "Лимонад",
 
-            Brand = "The Musketeers ",
+            Brand = "Волчек",
 
-            Name = "Troubadour Magma",
+            Name = "Cola",
 
-            Region = "Бельгия",
+            Region = "Россия",
 
-            Calories = 48,
+            Calories = 250,
 
-            Colour = "Светлое",
+            Colour = "Темный",
 
-            Degree = 0.9M,
+           
+            Volume = 0.5M,
 
-            Volume = 0.33M,
-
-            Taste = "Смородина"
+            Taste = "Кола"
 
         };
 

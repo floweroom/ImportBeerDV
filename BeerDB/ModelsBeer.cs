@@ -32,10 +32,6 @@ namespace BeerDB
 
 
         [Column(TypeName = "decimal(5, 2)")]
-        public decimal Degree { get; set; }
-
-
-        [Column(TypeName = "decimal(5, 2)")]
         public decimal Volume{ get; set; }
 
         public string Taste { get; set; }

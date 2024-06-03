@@ -55,7 +55,6 @@ namespace BeerForms
 
                 Colour = "Темное",
 
-                Degree = 4,
 
                 Volume = 0.5M,
 

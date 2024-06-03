@@ -67,7 +67,7 @@ namespace ImportBeerDV.Controllers.BaseControllers
 
                     Colour = beerDto.Colour,
 
-                    Degree = beerDto.Degree,
+                   
 
                     Volume = beerDto.Volume,
 
@@ -116,7 +116,7 @@ namespace ImportBeerDV.Controllers.BaseControllers
 
                     Colour = beerDto.Colour,
 
-                    Degree = beerDto.Degree,
+                   
 
                     Volume = beerDto.Volume,
 

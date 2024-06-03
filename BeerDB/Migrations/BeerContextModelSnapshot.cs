@@ -44,9 +44,6 @@ namespace BeerDB.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Degree")
-                        .HasColumnType("decimal(5, 2)");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

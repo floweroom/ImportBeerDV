@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BeerDB.Migrations
 {
     [DbContext(typeof(BeerContext))]
-    [Migration("20240526112630_Category")]
-    partial class Category
+    [Migration("20240603120325_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -46,9 +46,6 @@ namespace BeerDB.Migrations
                     b.Property<string>("Colour")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Degree")
-                        .HasColumnType("decimal(5, 2)");
 
                     b.Property<string>("Name")
                         .IsRequired()
