@@ -96,6 +96,25 @@ namespace BeerForms
                 ProductsList.Items.Add(item.Region);
             }
         }
+
+        private async void button4_Click(object sender, EventArgs e)
+        {
+            const string adress_str = "https://localhost:7143";
+            var client = new HttpClient();
+            client.BaseAddress = new Uri(adress_str);
+
+            var response = await client.GetAsync("api/modelbeer/get");
+            response.EnsureSuccessStatusCode();
+            var models = await response.Content.ReadFromJsonAsync<IEnumerable<ModelsBeer>>();
+
+            ProductsList.Items.Clear();
+
+            foreach (var item in models)
+            {
+                ProductsList.Items.Add(item.Category);
+            }
+
+        }
     }
 }
 
