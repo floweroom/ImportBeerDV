@@ -11,10 +11,7 @@ namespace BeerForms
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
 
-        }
 
         private async void button1_Click(object sender, EventArgs e)
         {
@@ -43,22 +40,22 @@ namespace BeerForms
 
             BeerDto beerDto = new BeerDto
             {
-                Category = "Пиво",
+                Category = "Лимонад",
 
-                Brand = "Prazechka",
+                Brand = "Волчек",
 
-                Name = "Светлое",
+                Name = "Смородина",
 
-                Region = "Чехия",
+                Region = "Россия",
 
-                Calories = 43,
+                Calories = 250,
 
-                Colour = "Темное",
+                Colour = "Красный",
 
 
                 Volume = 0.5M,
 
-                Taste = "пряный",
+                Taste = "Ягодный",
             };
 
 
@@ -76,10 +73,28 @@ namespace BeerForms
             var client = new HttpClient();
             client.BaseAddress = new Uri(adress_str);
             var id = 1;
-            
+
             var response = await client.DeleteAsync($"api/ModelBeer?id={id}");
 
 
+        }
+
+        private async void button5_Click(object sender, EventArgs e)
+        {
+            const string adress_str = "https://localhost:7143";
+            var client = new HttpClient();
+            client.BaseAddress = new Uri(adress_str);
+
+            var response = await client.GetAsync("api/modelbeer/get");
+            response.EnsureSuccessStatusCode();
+            var models = await response.Content.ReadFromJsonAsync<IEnumerable<ModelsBeer>>();
+
+            ProductsList.Items.Clear();
+
+            foreach (var item in models)
+            {
+                ProductsList.Items.Add(item.Region);
+            }
         }
     }
 }

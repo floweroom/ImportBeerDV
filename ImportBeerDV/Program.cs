@@ -29,9 +29,9 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var Db = scope.ServiceProvider.GetRequiredService<BeerContext>();
-    //Db.Database.EnsureDeleted();
-    //Db.Database.EnsureCreated();
-    Db.Database.Migrate();
+    Db.Database.EnsureDeleted();
+    Db.Database.EnsureCreated();
+    //Db.Database.Migrate();
     if (!Db.BModels.Any())
     {
 
@@ -40,11 +40,11 @@ using (var scope = app.Services.CreateScope())
         {
             Category = "Лимонад",
 
-            Brand = "Волчек",
+            Brand = "Волковский лимонад",
 
-            Name = "Арбуз",
+            Name = "Лимонад со вкусом арбуза",
 
-            Region = "Чехия",
+            Region = "Россия",
 
             Calories = 250,
 
@@ -61,9 +61,9 @@ using (var scope = app.Services.CreateScope())
 
             Category = "Лимонад",
 
-            Brand = "Волчек",
+            Brand = "Волковский лимонад",
 
-            Name = "Персиковый",
+            Name = "Лимонад со вкусом персика",
 
             Region = "Россия",
 
@@ -82,9 +82,9 @@ using (var scope = app.Services.CreateScope())
 
             Category = "Лимонад",
 
-            Brand = "Волчек",
+            Brand = "Волковский лимонад",
 
-            Name = "Манго-кокос",
+            Name = "Лимонад со вкусом манго-кокос",
 
             Region = "Россия",
 
@@ -105,9 +105,9 @@ using (var scope = app.Services.CreateScope())
 
             Category = "Лимонад",
 
-            Brand = "Волчек",
+            Brand = "Волковский лимонад",
 
-            Name = "Cola",
+            Name = "Лимонад со вкусом Cola",
 
             Region = "Россия",
 
